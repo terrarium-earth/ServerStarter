@@ -4,11 +4,14 @@ import atm.bloodworkxgaming.serverstarter.InternetManager
 import atm.bloodworkxgaming.serverstarter.config.ConfigFile
 import atm.bloodworkxgaming.serverstarter.packtype.curse.CurseIDPackType
 import atm.bloodworkxgaming.serverstarter.packtype.curse.CursePackType
+import atm.bloodworkxgaming.serverstarter.packtype.modrinth.ModrinthPackType
 import atm.bloodworkxgaming.serverstarter.packtype.zip.ZipFilePackType
 
 interface IPackType {
     companion object {
         private val packtype = mutableMapOf<String, (ConfigFile, InternetManager) -> IPackType>(
+                Pair("mr", ::ModrinthPackType),
+                Pair("modrinth", ::ModrinthPackType),
                 Pair("curse", ::CursePackType),
                 Pair("curseforge", ::CursePackType),
                 Pair("curseid", ::CurseIDPackType),
